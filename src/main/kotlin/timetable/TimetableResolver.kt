@@ -10,7 +10,7 @@ import mu.KotlinLogging
 
 import basicfunc.get_userdata_location
 
-fun resolveJsonedString(str: String): JsonedTimetable? {
+private fun resolveJsonedString(str: String): JsonedTimetable? {
     val logger = KotlinLogging.logger("resolveJsonedString")
     try {
         val gson = GsonBuilder()
@@ -36,10 +36,10 @@ fun resolveJsonedString(str: String): JsonedTimetable? {
         logger.debug("函数执行完毕。")
     }
 }
-fun resolveJsonedTimetable(ttName: String): Timetable? {
-    val logger = KotlinLogging.logger("resolveJsonedTimetable")
+fun resolveTimetable(ttName: String): Timetable? {
+    val logger = KotlinLogging.logger("resolveTimetable")
     try {
-        val filePath = "${get_userdata_location()}\\ImmersingClassData\\timetable\\${ttName}.json"
+        val filePath = "${get_userdata_location()}\\timetable\\${ttName}.json"
         if (File(filePath).exists() && File(filePath).isFile) {
             logger.debug("找到文件 ${ttName}.json！")
             var jsoned = ""
