@@ -1,8 +1,8 @@
 package timetable
 
 data class JsonedTimetable(
-    val subjects: MutableList<Subject>?,
-    val timelines: MutableList<Timeline>?,
-    val lessons: MutableList<Lessons>?,
-    val settings: MutableMap<String, String>?
+    val name: String,
+    val subjects: MutableList<Subject>,
+    val timelines: MutableList<Timeline>,
+    val lessons: MutableList<Lessons>
 )

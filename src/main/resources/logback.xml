@@ -1,11 +1,37 @@
-<configuration>
-    <appender name = "CONSOLE" class = "ch.qos.logback.core.ConsoleAppender">
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration scan="true" scanPeriod="30 seconds">
+    <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n" />
+    <property name="LOG_DIR" value="./logs" />
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} | %-5level | %logger{36} | %msg%n</pattern>
+            <pattern>${LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+    </appender>
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_DIR}/iclass.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_DIR}/iclass-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>15</maxHistory>
+            <totalSizeCap>512MB</totalSizeCap>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <maxFileSize>50MB</maxFileSize>
+        </triggeringPolicy>
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
             <charset>UTF-8</charset>
         </encoder>
     </appender>
-    <root level = "DEBUG">
-        <appender-ref ref = "CONSOLE" />
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="FILE" />
     </root>
+    <logger name="com.examole" level="DEBUG" additivity="false">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="FILE" />
+    </logger>
 </configuration>
