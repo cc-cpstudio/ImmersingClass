@@ -2,10 +2,10 @@ package timetable
 
 import java.io.File
 import java.io.FileNotFoundException
+import java.lang.IllegalStateException
 
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonSyntaxException
-import kotlin.IllegalStateException
 import mu.KotlinLogging
 
 import basicfunc.get_userdata_location
@@ -36,7 +36,7 @@ fun resolveJsonedString(str: String): JsonedTimetable? {
         logger.debug("函数执行完毕。")
     }
 }
-fun resolveJsonedTimetable(ttName: String): Timetable? {
+fun resolveJsonedTimetable(ttName: String): Timetable {
     val logger = KotlinLogging.logger("resolveJsonedTimetable")
     try {
         val filePath = "${get_userdata_location()}\\${ttName}.json"
@@ -49,14 +49,23 @@ fun resolveJsonedTimetable(ttName: String): Timetable? {
                 jsoned += line
             }
             val res = resolveJsonedString(jsoned)
-            return TODO("提供返回值")
+            res?.let {
+                if (it.name != ttName) {
+                    logger.warn("时间表文件名称 $ttName 与表内名称 ${it.name} 不一致！")
+                }
+            }
+            return Timetable(res)
         } else {
             throw FileNotFoundException("路径 $filePath 不存在或是一个目录！")
         }
     } catch(e: FileNotFoundException) {
         logger.error("文件 ${ttName}.json 不存在！")
         e.printStackTrace()
-        return null
+        return Timetable()
+    } catch(e: Exception) {
+        logger.error("解析文件 ${ttName}.json 时出错：未知错误！")
+        e.printStackTrace()
+        return Timetable()
     } finally {
         logger.debug("函数执行完毕。")
     }

@@ -2,6 +2,7 @@ package timetable
 
 val jsoned_timetable = """
     {
+        "name": "testString"
         "subjects": [
             {
                 "id": 0,
