@@ -1,4 +1,4 @@
-package timetable
+package backend.timetable
 
 import java.io.File
 import java.io.FileNotFoundException
@@ -8,7 +8,7 @@ import com.google.gson.GsonBuilder
 import com.google.gson.JsonSyntaxException
 import mu.KotlinLogging
 
-import basicfunc.get_userdata_location
+import backend.basicfunc.get_userdata_location
 
 private fun resolveJsonedString(str: String): JsonedTimetable? {
     val logger = KotlinLogging.logger("resolveJsonedString")

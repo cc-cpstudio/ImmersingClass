@@ -1,11 +1,11 @@
-package timetable
+package backend.timetable
 
 import java.io.File
 import java.io.FileNotFoundException
 
 import mu.KotlinLogging
 
-import basicfunc.get_userdata_location
+import backend.basicfunc.get_userdata_location
 
 object TimetableManager {
     class TooLessTimetableException(): Exception("时间表太少以至于不能执行后续操作")

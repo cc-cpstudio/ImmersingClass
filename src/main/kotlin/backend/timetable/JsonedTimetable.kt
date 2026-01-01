@@ -1,4 +1,4 @@
-package timetable
+package backend.timetable
 
 data class JsonedTimetable(
     val name: String,
