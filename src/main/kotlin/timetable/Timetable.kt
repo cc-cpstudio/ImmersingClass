@@ -11,7 +11,7 @@ class Timetable(jsoned: JsonedTimetable?) {
 
     companion object: KLogging()
 
-    var name = ""
+    var name: String = ""
     val subjects = mutableListOf<Subject>()
     val timelines = mutableListOf<Timeline>()
     val lessons = mutableListOf<Lessons>()

@@ -36,17 +36,17 @@ fun resolveJsonedString(str: String): JsonedTimetable? {
         logger.debug("函数执行完毕。")
     }
 }
-fun resolveJsonedTimetable(ttName: String): Timetable {
+fun resolveJsonedTimetable(ttName: String): Timetable? {
     val logger = KotlinLogging.logger("resolveJsonedTimetable")
     try {
-        val filePath = "${get_userdata_location()}\\${ttName}.json"
+        val filePath = "${get_userdata_location()}\\ImmersingClassData\\timetable\\${ttName}.json"
         if (File(filePath).exists() && File(filePath).isFile) {
             logger.debug("找到文件 ${ttName}.json！")
             var jsoned = ""
             val file = File(filePath)
             logger.debug("成功创建 $ttName.json 的文件对象！")
-            file.forEachLine { line ->
-                jsoned += line
+            file.forEachLine {
+                jsoned += it
             }
             val res = resolveJsonedString(jsoned)
             res?.let {
@@ -61,11 +61,11 @@ fun resolveJsonedTimetable(ttName: String): Timetable {
     } catch(e: FileNotFoundException) {
         logger.error("文件 ${ttName}.json 不存在！")
         e.printStackTrace()
-        return Timetable()
+        return null
     } catch(e: Exception) {
         logger.error("解析文件 ${ttName}.json 时出错：未知错误！")
         e.printStackTrace()
-        return Timetable()
+        return null
     } finally {
         logger.debug("函数执行完毕。")
     }
