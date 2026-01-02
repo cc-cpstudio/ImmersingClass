@@ -15,9 +15,20 @@
     </properties>
 
     <repositories>
+<!--        <repository>-->
+<!--            <id>mavenCentral</id>-->
+<!--            <url>https://repo1.maven.org/maven2/</url>-->
+<!--        </repository>-->
         <repository>
-            <id>mavenCentral</id>
-            <url>https://repo1.maven.org/maven2/</url>
+            <id>jcenter</id>
+            <name>JCenter Repository</name>
+            <url>https://jcenter.bintray.com/</url>
+            <releases>
+                <enabled>true</enabled> <!-- 启用发布版依赖下载 -->
+            </releases>
+            <snapshots>
+                <enabled>false</enabled> <!-- 禁用快照版依赖下载，提升稳定性 -->
+            </snapshots>
         </repository>
     </repositories>
 
@@ -125,8 +136,11 @@
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-graphics</artifactId>
             <version>21.0.6</version>
-            <!-- 自动适配不同操作系统（win/mac/linux） -->
-            <classifier>win</classifier>
+        </dependency>
+        <dependency>
+            <groupId>io.github.palexdev</groupId>
+            <artifactId>materialfx</artifactId>
+            <version>11.17.0</version>
         </dependency>
     </dependencies>
 
