@@ -51,7 +51,7 @@ class Timetable(jsoned: JsonedTimetable?) {
     // Here's APIs:
 
     fun currNode(): TimeNode? = null // 当前时间节点，若未配置可用课程表或已放学则为null
-    fun currState(): String? = currNode()?.type // 当前时间节点状态，若currNode()为null则为null
+    fun currState(): TimeNodeState? = currNode()?.state // 当前时间节点状态，若currNode()为null则为null
     fun currSubject(): Subject? = null// 当前科目，若不处于上课节点则为null
     fun currLessons(): Lessons? = null //当前启用的课程表，若没有可用课程表则为null
     fun nextNode(): TimeNode? = null // 下一个时间节点，若未配置可用课程表或位于时间线最后一个节点则为null
