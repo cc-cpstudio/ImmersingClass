@@ -16,8 +16,10 @@ object TestTermEmulator {
                 when (res[0]) {
                     "connect" -> connect(res[1])
                     "create" -> create(res[1])
+                    "crtt" -> currentTimetable()
                     "delete" -> delete(res[1])
                     "disconnect" -> disconnect()
+                    "lstt" -> listTimetables()
                     "exit" -> break
                     "refresh" -> refresh()
                 }
@@ -45,6 +47,20 @@ object TestTermEmulator {
     private fun refresh() {
         logger.debug("开始执行 refresh ……")
         TimetableManager.refreshTimetables()
+    }
+    private fun listTimetables() {
+        logger.debug("开始执行 lstt ……")
+        val res = TimetableManager.timetableNames
+        val cur = TimetableManager.currentTimetable?.name
+        res.forEach {
+            if (it == cur) { print(" * ") } else { print("   ") }
+            println(it)
+        }
+    }
+    private fun currentTimetable() {
+        logger.debug("开始执行 crtt ……")
+        val cur = TimetableManager.currentTimetable?.name
+        println(cur ?: "No timetable is connected.")
     }
 }
 
