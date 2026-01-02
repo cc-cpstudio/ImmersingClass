@@ -1,6 +1,6 @@
-package timetable
+package backend.timetable
 
-import basicfunc.get_userdata_location
+import backend.basicfunc.get_userdata_location
 
 import java.io.File
 

@@ -1,4 +1,4 @@
-package timetable
+package backend.timetable
 
 import com.google.gson.JsonDeserializationContext
 import java.lang.reflect.Type

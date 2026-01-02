@@ -1,4 +1,4 @@
-package timetable
+package backend.timetable
 
 data class Subject(
     val id: Int,
