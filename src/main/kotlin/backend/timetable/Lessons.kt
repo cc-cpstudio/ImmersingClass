@@ -4,6 +4,7 @@ import java.time.DayOfWeek
 
 data class Lessons(
     val id: Int,
+    val enabled: Boolean,
     val timeline: Int,
     val workWeekday: DayOfWeek,
     val workWeek: Pair<Int, Int>,
