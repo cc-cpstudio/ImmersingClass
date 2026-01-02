@@ -39,52 +39,17 @@ class Timetable(jsoned: JsonedTimetable?) {
             logger.debug("Timetable 创建完毕！")
         }
     }
-    constructor(): this(null)
 
-    fun toJsoned(): JsonedTimetable? {
+    fun save() {
+        logger.debug("开始保存时间表: $name")
         try {
-            logger.debug("成功创建 JsonedTimetable！")
-            return JsonedTimetable(
-                name = name,
-                subjects = subjects,
-                timelines = timelines,
-                lessons = lessons
-            )
+            serializeTimetable(this)
+            logger.debug("时间表保存成功: $name")
         } catch (e: Exception) {
-            logger.error("创建 JsonedTimetable 时出错：未知错误！")
-            e.printStackTrace()
-            return null
-        } finally {
-            logger.debug("函数执行完毕。")
+            logger.error("保存时间表时出错: $name", e)
+            throw e
         }
     }
 
-    fun toJson(): String? {
-        try {
-            val gson = GsonBuilder()
-                .disableHtmlEscaping()
-                .setPrettyPrinting()
-                .create()
-            logger.debug("成功创建 Gson 对象！")
-
-            val jsonedTimetable = toJsoned()
-            logger.debug("成功转换为 JsonedTimetable！")
-
-            return gson.toJson(jsonedTimetable)
-        } catch (e: JsonSyntaxException) {
-            logger.error("转换 JsonedTimetable 到 Json 时出错：无参构造函数缺失！")
-            e.printStackTrace()
-            return null
-        } catch (e: IllegalStateException) {
-            logger.error("转换 JsonedTimetable 到 Json 时出错：字段访问失败！")
-            e.printStackTrace()
-            return null
-        } catch (e: JsonParseException) {
-            logger.error("转换 JsonedTimetable 到 Json 时出错：非空类型遇到null值！")
-            e.printStackTrace()
-            return null
-        } finally {
-            logger.debug("函数执行完毕。")
-        }
-    }
+    constructor(): this(null)
 }

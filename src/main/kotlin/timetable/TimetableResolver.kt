@@ -38,7 +38,7 @@ private fun resolveJsonedString(str: String): JsonedTimetable? {
         logger.debug("函数执行完毕。")
     }
 }
-fun resolveTimetable(ttName: String): Timetable? {
+fun resolveTimetable(ttName: String): Timetable {
     val logger = KotlinLogging.logger("resolveTimetable")
     try {
         val filePath = "${get_userdata_location()}\\timetable\\${ttName}.json"
@@ -63,11 +63,11 @@ fun resolveTimetable(ttName: String): Timetable? {
     } catch(e: FileNotFoundException) {
         logger.error("文件 ${ttName}.json 不存在！")
         e.printStackTrace()
-        return null
+        return Timetable()
     } catch(e: Exception) {
         logger.error("解析文件 ${ttName}.json 时出错：未知错误！")
         e.printStackTrace()
-        return null
+        return Timetable()
     } finally {
         logger.debug("函数执行完毕。")
     }
