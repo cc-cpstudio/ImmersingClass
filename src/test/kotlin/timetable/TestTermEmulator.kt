@@ -15,10 +15,11 @@ object TestTermEmulator {
                 val res = it.split(" ")
                 when (res[0]) {
                     "connect" -> connect(res[1])
-                    "disconnect" -> disconnect()
                     "create" -> create(res[1])
                     "delete" -> delete(res[1])
+                    "disconnect" -> disconnect()
                     "exit" -> break
+                    "refresh" -> refresh()
                 }
             }
         }
@@ -40,6 +41,10 @@ object TestTermEmulator {
     private fun delete(ttName: String) {
         logger.debug("开始执行 delete ……")
         TimetableManager.delete(ttName)
+    }
+    private fun refresh() {
+        logger.debug("开始执行 refresh ……")
+        TimetableManager.refreshTimetables()
     }
 }
 
