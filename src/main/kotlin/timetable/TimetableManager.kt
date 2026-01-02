@@ -8,7 +8,7 @@ import mu.KotlinLogging
 import basicfunc.get_userdata_location
 
 object TimetableManager {
-    class TooLessTimetableException(): Exception("时间表太少以至于不能执行后续操作")
+    class TooLessTimetableException: Exception("时间表太少以至于不能执行后续操作")
 
     private val logger = KotlinLogging.logger("TimetableManager")
 
@@ -141,9 +141,10 @@ object TimetableManager {
         }
     }
 
-    // 以下是该单例类提供的API：
+    // Here's APIs:
 
     fun currentTimetableName(): String? = currentTimetable?.name
     fun allTimetableNames(): List<String> = timetableNames
+    fun isConnected(): Boolean = currentTimetable != null
 
 }
