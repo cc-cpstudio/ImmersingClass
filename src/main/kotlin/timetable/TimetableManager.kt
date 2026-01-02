@@ -90,7 +90,14 @@ object TimetableManager {
     fun create(name: String) {
         try {
             val file = File("${get_userdata_location()}\\timetable\\$name.json")
-            file.writeText("{}")
+            file.writeText("""
+                {
+                    "name": "$name",
+                    "subjects": [],
+                    "timelines": [],
+                    "lessons": []
+                }
+            """.trimIndent())
             timetableNames.add(name)
             logger.debug("已创建时间表文件: $name.json")
         } catch (e: Exception) {
