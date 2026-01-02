@@ -13,7 +13,7 @@ fun serializeTimetable(tt: Timetable) {
     val logger = KotlinLogging.logger("serializeTimetable")
     try {
         val gson = GsonBuilder()
-            .registerTypeAdapter(LocalTime::class.java, LocalTimeAdapter::class.java)
+            .registerTypeAdapter(LocalTime::class.java, LocalTimeAdapter())
             .setPrettyPrinting()
             .disableHtmlEscaping()
             .create()

@@ -15,7 +15,7 @@ private fun resolveJsonedString(str: String): JsonedTimetable? {
     val logger = KotlinLogging.logger("resolveJsonedString")
     try {
         val gson = GsonBuilder()
-            .registerTypeAdapter(LocalTime::class.java, LocalTimeAdapter::class.java)
+            .registerTypeAdapter(LocalTime::class.java, LocalTimeAdapter())
             .disableHtmlEscaping()
             .create()
         logger.debug("成功创建Gson对象！")
