@@ -7,11 +7,13 @@ import java.io.File
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonSyntaxException
 import mu.KotlinLogging
+import java.time.LocalTime
 
 fun serializeTimetable(tt: Timetable) {
     val logger = KotlinLogging.logger("serializeTimetable")
     try {
         val gson = GsonBuilder()
+            .registerTypeAdapter(LocalTime::class.java, LocalTimeAdapter::class.java)
             .setPrettyPrinting()
             .disableHtmlEscaping()
             .create()
