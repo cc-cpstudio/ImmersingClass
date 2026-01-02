@@ -3,6 +3,7 @@ package timetable
 import java.io.File
 import java.io.FileNotFoundException
 import java.lang.IllegalStateException
+import java.time.LocalTime
 
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonSyntaxException
@@ -14,6 +15,7 @@ private fun resolveJsonedString(str: String): JsonedTimetable? {
     val logger = KotlinLogging.logger("resolveJsonedString")
     try {
         val gson = GsonBuilder()
+            .registerTypeAdapter(LocalTime::class.java, LocalTimeAdapter::class.java)
             .disableHtmlEscaping()
             .create()
         logger.debug("成功创建Gson对象！")
