@@ -18,7 +18,7 @@ class Timetable(jsoned: JsonedTimetable?) {
 
     init {
         try {
-            name = jsoned?.name ?: "New Timetable"
+            name = jsoned?.name ?: "New-Timetable"
             subjects.addAll(jsoned?.subjects ?: listOf())
             timelines.addAll(jsoned?.timelines ?: listOf())
             lessons.addAll(jsoned?.lessons ?: listOf())
