@@ -1,4 +1,4 @@
-package timetable
+package backend.timetable
 
 import java.lang.IllegalStateException
 
