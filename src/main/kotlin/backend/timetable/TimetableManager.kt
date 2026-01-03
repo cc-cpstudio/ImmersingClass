@@ -20,7 +20,7 @@ object TimetableManager {
             timetableNames.clear()
             logger.debug("已清空 timetableNames 列表！")
 
-            val dir = File("${get_userdata_location()}\\timetable")
+            val dir = File("${get_userdata_location()}\\timetables")
             if (dir.exists() && dir.isDirectory) {
                 logger.debug("找到目录 ${dir.absolutePath}！开始寻找时间表文件")
                 val files = dir.listFiles()
@@ -113,7 +113,7 @@ object TimetableManager {
                     disconnect()
                 }
             }
-            val file = File("${get_userdata_location()}\\timetable\\$ttName.json")
+            val file = File("${get_userdata_location()}\\timetables\\$ttName.json")
             if (file.exists()) {
                 val result = file.delete()
                 if (result) {

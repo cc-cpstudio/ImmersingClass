@@ -18,7 +18,7 @@ fun serializeTimetable(tt: Timetable) {
             .disableHtmlEscaping()
             .create()
         logger.debug("创建Gson实例完成")
-        val file = File("${get_userdata_location()}\\timetable\\${tt.name}.json")
+        val file = File("${get_userdata_location()}\\timetables\\${tt.name}.json")
         logger.debug("准备创建JsonedTimetable对象，时间表名称: ${tt.name}")
         val jsoned = JsonedTimetable(
             tt.name,

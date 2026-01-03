@@ -41,7 +41,7 @@ private fun resolveJsonedString(str: String): JsonedTimetable? {
 fun resolveTimetable(ttName: String): Timetable {
     val logger = KotlinLogging.logger("resolveTimetable")
     try {
-        val filePath = "${get_userdata_location()}\\timetable\\${ttName}.json"
+        val filePath = "${get_userdata_location()}\\timetables\\${ttName}.json"
         if (File(filePath).exists() && File(filePath).isFile) {
             logger.debug("找到文件 ${ttName}.json！")
             var jsoned = ""
