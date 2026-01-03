@@ -10,6 +10,7 @@ import com.google.gson.JsonSyntaxException
 import mu.KotlinLogging
 
 import backend.basicfunc.get_userdata_location
+import timetable.LocalTimeAdapter
 
 private fun resolveJsonedString(str: String): JsonedTimetable? {
     val logger = KotlinLogging.logger("resolveJsonedString")

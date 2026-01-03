@@ -10,8 +10,9 @@
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="frontend.infobar.InfobarController"
+      alignment="CENTER"
       spacing="20.0"
-      style="-fx-background-radius: 20px; -fx-background-color: #f0f0f0;">
+      style="-fx-background-radius: 50px; -fx-background-color: #f0f0f0;">
 
     <padding>
         <Insets top="20" right="20" bottom="20" left="20"/>
