@@ -23,8 +23,8 @@ fun serializeTimetable(tt: Timetable) {
         val jsoned = JsonedTimetable(
             tt.name,
             tt.subjects,
-            tt.timelines,
-            tt.lessons
+            tt.jsonedTimelines,
+            tt.jsonedLessons
         )
         logger.debug("JsonedTimetable对象创建完成，开始转换为JSON字符串")
         val res = gson.toJson(jsoned, JsonedTimetable::class.java)

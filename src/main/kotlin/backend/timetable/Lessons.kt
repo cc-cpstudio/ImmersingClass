@@ -1,12 +1,6 @@
 package backend.timetable
 
-import java.time.DayOfWeek
-
-data class Lessons(
-    val id: Int,
-    val enabled: Boolean,
-    val timeline: Int,
-    val workWeekday: DayOfWeek,
-    val workWeek: Pair<Int, Int>,
-    val nodes: MutableList<LessonNode>
-)
+class Lessons(jsoned: JsonedLessons?) {
+    init { }
+    constructor(): this(null)
+}
