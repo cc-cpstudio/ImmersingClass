@@ -1,0 +1,12 @@
+package backend.settings.base
+
+abstract class IntSizerSettingConfigBase: SettingConfigBase() {
+    abstract override val title: String
+    abstract override val subtitle: String
+    override val type: SettingType = SettingType.INT_SIZER
+
+    abstract val top: Int
+    abstract val bottom: Int
+    abstract val step: Int
+    abstract val allowInput: Boolean
+}
