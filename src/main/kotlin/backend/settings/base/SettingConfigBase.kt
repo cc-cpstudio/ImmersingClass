@@ -5,5 +5,6 @@ abstract class SettingConfigBase {
     abstract val subtitle: String
     abstract val icon: Any
     abstract val type: SettingType
-    abstract val value: Any?
+    abstract val def: Any?
+    abstract var value: Any?
 }
