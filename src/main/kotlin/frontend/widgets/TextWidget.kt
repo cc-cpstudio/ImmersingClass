@@ -6,6 +6,7 @@ import org.dom4j.DocumentHelper
 
 class TextWidget: InfobarWidgetBase() {
     override var position: Int = -1
+    override val version: Int = 0
     override val name: String = "TextWidget"
     override var opaqueness: Int? = null
     override var width: Int? = null
