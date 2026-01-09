@@ -3,11 +3,13 @@ package backend.timetable
 import backend.basicfunc.get_userdata_location
 
 import java.io.File
+import java.time.LocalTime
 
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonSyntaxException
 import mu.KotlinLogging
-import java.time.LocalTime
+
+import timetable.LocalTimeAdapter
 
 fun serializeTimetable(tt: Timetable) {
     val logger = KotlinLogging.logger("serializeTimetable")
