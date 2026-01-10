@@ -8,8 +8,6 @@ import mu.KotlinLogging
 import backend.basicfunc.get_userdata_location
 
 object TimetableManager {
-    class TooLessTimetableException: Exception("时间表太少以至于不能执行后续操作")
-
     private val logger = KotlinLogging.logger("TimetableManager")
 
     val timetableNames = mutableListOf<String>()
@@ -105,7 +103,7 @@ object TimetableManager {
         try {
             if (timetableNames.size <= 1) {
                 logger.error("尝试删除时间表 $ttName 失败：时间表数量不足以删除该表")
-                throw TooLessTimetableException()
+                throw TooLessTimetable()
             }
             currentTimetable?.let { 
                 if (it.name == ttName) {
@@ -127,7 +125,7 @@ object TimetableManager {
                 logger.warn("要删除的时间表文件不存在: $ttName.json")
                 throw FileNotFoundException("时间表文件不存在: $ttName.json")
             }
-        } catch (e: TooLessTimetableException) {
+        } catch (e: TooLessTimetable) {
             logger.error("删除时间表时出错：时间表数量太少")
             throw e
         } catch (e: FileNotFoundException) {
