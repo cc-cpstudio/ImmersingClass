@@ -7,6 +7,7 @@ import java.io.File
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonSyntaxException
 import mu.KotlinLogging
+import java.time.LocalDate
 import java.time.LocalTime
 
 fun serializeTimetable(tt: Timetable) {
@@ -14,6 +15,7 @@ fun serializeTimetable(tt: Timetable) {
     try {
         val gson = GsonBuilder()
             .registerTypeAdapter(LocalTime::class.java, LocalTimeAdapter())
+            .registerTypeAdapter(LocalDate::class.java, LocalDateAdapter())
             .setPrettyPrinting()
             .disableHtmlEscaping()
             .create()
@@ -24,7 +26,8 @@ fun serializeTimetable(tt: Timetable) {
             tt.name,
             tt.subjects,
             tt.jsonedTimelines,
-            tt.jsonedLessons
+            tt.jsonedLessons,
+            tt.schoolOpenDate
         )
         logger.debug("JsonedTimetable对象创建完成，开始转换为JSON字符串")
         val res = gson.toJson(jsoned, JsonedTimetable::class.java)

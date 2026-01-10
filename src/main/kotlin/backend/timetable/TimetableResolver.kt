@@ -10,12 +10,14 @@ import com.google.gson.JsonSyntaxException
 import mu.KotlinLogging
 
 import backend.basicfunc.get_userdata_location
+import java.time.LocalDate
 
 private fun resolveJsonedString(str: String): JsonedTimetable? {
     val logger = KotlinLogging.logger("resolveJsonedString")
     try {
         val gson = GsonBuilder()
             .registerTypeAdapter(LocalTime::class.java, LocalTimeAdapter())
+            .registerTypeAdapter(LocalDate::class.java, LocalDateAdapter())
             .disableHtmlEscaping()
             .create()
         logger.debug("成功创建Gson对象！")
